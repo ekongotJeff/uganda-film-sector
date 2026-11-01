@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uganda Film Sector Baseline</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Economic and employment baseline of Uganda's film and audiovisual sector. National Producers Guild of Uganda, November 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: a film-slate dashboard. Black slate header, warm-paper body, orange PGU accent used only for the active case and key marks. */
+:root{
+  --bg:#f7f5f1; --surface:#ffffff; --ink:#15130f; --muted:#5d5850; --line:#dedad2; --soft:#efebe4;
+  --accent:#d9711a; --accent-ink:#9a4c0c; --slate:#15130f; --on-slate:#f7f5f1;
+  --ok:#2f7d4f; --info:#2f5f8f; --warn:#a86a0d; --gap:#b2392f; --unv:#6f6a62;
+  --ok-bg:#e3f1e8; --info-bg:#e2ebf5; --warn-bg:#f8ecd8; --gap-bg:#f6e1de; --unv-bg:#ebe8e3;
+  --display:"Poppins",Arial,Helvetica,sans-serif; --body:Arial,Helvetica,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141311; --surface:#1d1b18; --ink:#efebe4; --muted:#a8a197; --line:#34312c; --soft:#25231f;
+  --accent:#f0913e; --accent-ink:#f5a865; --slate:#0b0a09; --on-slate:#f2eee8;
+  --ok:#6cc08d; --info:#7fb0e0; --warn:#e2a54a; --gap:#ec7d72; --unv:#aaa49b;
+  --ok-bg:#1e3326; --info-bg:#1c2a3a; --warn-bg:#3a2c17; --gap-bg:#3d201d; --unv-bg:#2c2a26; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141311; --surface:#1d1b18; --ink:#efebe4; --muted:#a8a197; --line:#34312c; --soft:#25231f;
+  --accent:#f0913e; --accent-ink:#f5a865; --slate:#0b0a09; --on-slate:#f2eee8;
+  --ok:#6cc08d; --info:#7fb0e0; --warn:#e2a54a; --gap:#ec7d72; --unv:#aaa49b;
+  --ok-bg:#1e3326; --info-bg:#1c2a3a; --warn-bg:#3a2c17; --gap-bg:#3d201d; --unv-bg:#2c2a26; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--slate)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h2{font-size:1.45rem;font-weight:600}
+h3{font-size:1.02rem;font-weight:600}
+p{margin:0;max-width:68ch}
+.num,td.n,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a{color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* slate header */
+.slate{background:var(--slate);color:var(--on-slate)}
+.slate .wrap{padding-block:28px 24px;display:grid;gap:18px}
+.clap{height:14px;background:repeating-linear-gradient(135deg,var(--on-slate) 0 18px,var(--slate) 18px 36px);opacity:.9}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#bdb6aa}
+.slate h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700}
+.slate-meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.78rem;color:#cfc8bc}
+.slate-meta b{color:var(--on-slate);font-weight:500}
+.draft{display:inline-block;background:var(--accent);color:#15130f;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;padding:3px 8px;border-radius:2px;text-transform:uppercase}
+
+/* sticky nav */
+nav.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.bar .wrap{display:flex;align-items:center;gap:12px;padding-block:10px;flex-wrap:wrap}
+.links{display:flex;gap:4px;overflow-x:auto;flex:1 1 400px;min-width:0;scrollbar-width:thin}
+.links a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.84rem;padding:6px 10px;border-radius:3px}
+.links a:hover{background:var(--soft);color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{all:unset;cursor:pointer;font-family:var(--mono);font-size:.8rem;padding:6px 12px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.caselabel{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+section{padding-block:44px;border-bottom:1px solid var(--line)}
+.sec-head{display:grid;gap:8px;margin-bottom:22px}
+.sec-head .eyebrow{color:var(--accent-ink)}
+.lede{color:var(--muted)}
+
+/* labels */
+.chip{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;padding:2px 6px;border-radius:2px;white-space:nowrap;text-transform:uppercase;font-weight:500}
+.c-VERIFIED{background:var(--ok-bg);color:var(--ok)}
+.c-DERIVED{background:var(--info-bg);color:var(--info)}
+.c-ESTIMATE{background:var(--warn-bg);color:var(--warn)}
+.c-GAP{background:var(--gap-bg);color:var(--gap)}
+.c-UNVERIFIED{background:var(--unv-bg);color:var(--unv)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:.82rem;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+
+/* hero sentence */
+.sentence{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.55rem);line-height:1.5;max-width:60ch}
+.sentence .v{color:var(--accent-ink);font-family:var(--mono);font-weight:500;white-space:nowrap}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:26px}
+.tiles{}
+@media (max-width:640px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{background:var(--surface);padding:16px 16px 14px;display:grid;gap:4px;align-content:start}
+.tile .k{font-size:.8rem;color:var(--muted)}
+.tile .big{font-family:var(--mono);font-size:1.6rem;font-weight:500;line-height:1.1}
+.tile .rng{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.tile .chip{justify-self:start;margin-top:4px}
+
+/* value chain */
+.vc{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.layer{display:grid;gap:6px;align-content:start;min-width:0}
+.layer-h{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink);padding-bottom:6px;min-height:3.4em}
+.layer-h b{display:block;color:var(--ink);font-family:var(--display);font-size:.95rem;letter-spacing:0;text-transform:none;font-weight:600}
+.cat{all:unset;cursor:pointer;display:grid;gap:3px;padding:7px 8px;border:1px solid var(--line);border-radius:3px;background:var(--surface);position:relative;overflow:hidden;min-width:0}
+.cat .bar{position:absolute;left:0;bottom:0;height:3px;background:var(--accent)}
+.cat .nm{font-size:.78rem;line-height:1.25}
+.cat .jb{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.cat.gap{background:var(--soft);border-style:dashed}
+.cat.ext .nm::after{content:" (ext.)";color:var(--muted)}
+.cat[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.cat:hover{border-color:var(--muted)}
+.detail{margin-top:16px;border:1px solid var(--ink);background:var(--surface);padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 20px}
+.detail .t{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+.dl{display:grid;gap:2px}
+.dl .k{font-size:.74rem;color:var(--muted)}
+.dl .v{font-family:var(--mono)}
+@media (max-width:900px){.vc{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:520px){.vc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* charts */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.grid2>*{min-width:0}
+.panel{display:grid;gap:12px;align-content:start}
+.hbar{display:grid;gap:7px}
+.hrow{display:grid;grid-template-columns:minmax(120px,190px) 1fr minmax(64px,auto);gap:10px;align-items:center;font-size:.84rem}
+.hrow .lab{min-width:0}
+.track{height:16px;background:var(--soft);position:relative;border-radius:2px}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--ink);border-radius:2px}
+.fill.acc{background:var(--accent)}
+.fill.ghost{background:transparent;border:1px dashed var(--muted)}
+.more{position:absolute;right:-2px;top:50%;transform:translateY(-55%);font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.rangebar{position:absolute;top:50%;height:2px;background:var(--muted);transform:translateY(-50%)}
+.hrow .val{font-family:var(--mono);text-align:right;white-space:nowrap}
+.hrow.gaprow .val{color:var(--gap);font-size:.72rem}
+.note{font-size:.78rem;color:var(--muted)}
+svg text{fill:var(--muted);font-family:var(--mono);font-size:11px}
+svg .axis{stroke:var(--line)}
+.callout{border-left:3px solid var(--accent);padding:4px 0 4px 14px;display:grid;gap:4px}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.84rem}
+th{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;text-align:left;color:var(--muted);font-weight:500;padding:9px 10px;border-bottom:1px solid var(--ink);background:var(--surface);position:sticky;top:0}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr.tot td{font-weight:700;border-top:1px solid var(--ink)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.filters input,.filters select{font:inherit;font-size:.85rem;padding:6px 10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:3px}
+
+.myth{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.myth article{border:1px solid var(--line);background:var(--surface);padding:16px;display:grid;gap:10px;align-content:start}
+.myth .claim{font-family:var(--display);font-weight:600;font-size:1.05rem;text-decoration:line-through;text-decoration-color:var(--gap);text-decoration-thickness:2px}
+.myth .fact{font-size:.88rem}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.step{border-top:2px solid var(--ink);padding-top:10px;display:grid;gap:6px;align-content:start}
+.step .meta{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+
+footer{padding-block:36px 48px;color:var(--muted);font-size:.82rem}
+footer .wrap{display:grid;gap:10px}
+@media (prefers-reduced-motion:no-preference){.fill,.cat .bar{transition:width .35s ease}}
+</style>
+
+</head>
+<body>
+<header class="slate">
+  <div class="clap" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">National Producers Guild of Uganda · Deliverable 3 of 7</div>
+    <h1>Uganda Film Sector Economic &amp; Employment Baseline</h1>
+    <div class="slate-meta">
+      <span><b>Reference year</b> 2026</span><span><b>Prices</b> 2026 UGX</span><span><b>GDP base</b> FY2025/26 UGX 254.2 tn</span><span><b>FX</b> UGX 3,692 / US$</span><span><b>Updated</b> November 2026</span>
+    </div>
+    <div><span class="draft">Draft · figures are estimates pending UBOS technical review</span></div>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Sections">
+  <div class="wrap">
+    <div class="links">
+      <a href="#summary">Summary</a><a href="#chain">Value chain</a><a href="#money">Economic activity</a><a href="#jobs">Jobs</a><a href="#tax">Tax</a><a href="#scenarios">2029 scenarios</a><a href="#claims">Claims vs evidence</a><a href="#gaps">Data gaps</a><a href="#kpis">Indicators</a><a href="#sources">Sources</a>
+    </div>
+    <span class="caselabel" id="caselbl">Case</span>
+    <div class="seg" role="group" aria-labelledby="caselbl">
+      <button id="case-0" data-case="0" aria-pressed="false">Low</button>
+      <button id="case-1" data-case="1" aria-pressed="true">Central</button>
+      <button id="case-2" data-case="2" aria-pressed="false">High</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section id="summary"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">The sentence Government asked for</div></div>
+  <p class="sentence" id="sentence"></p>
+  <div class="tiles" id="tiles"></div>
+  <div style="display:grid;gap:10px;margin-top:20px">
+    <div class="legend">
+      <span><i class="chip c-VERIFIED">Verified</i>sourced, with year</span>
+      <span><i class="chip c-DERIVED">Derived</i>calculated from verified inputs</span>
+      <span><i class="chip c-ESTIMATE">Estimate</i>range with stated method</span>
+      <span><i class="chip c-GAP">Data gap</i>no data exists yet</span>
+      <span><i class="chip c-UNVERIFIED">Unverified</i>in circulation, no primary source</span>
+    </div>
+    <p class="note">Central is the most defensible single figure. Low and High set every assumption to its extreme at the same time, so the true value is unlikely to sit at either end. Use the case switch at the top to see each.</p>
+  </div>
+</div></section>
+
+<section id="chain"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Six layers, 54 player categories</div>
+    <h2>Who works where in the value chain</h2>
+    <p class="lede">Structure from the Deliverable 2 value chain map. The orange rule under each tile is scaled to direct jobs. Dashed tiles have no data yet. Select a category for its codes, jobs and enterprises.</p>
+  </div>
+  <div class="vc" id="vc"></div>
+  <div class="detail" id="detail" aria-live="polite"></div>
+</div></section>
+
+<section id="money"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Output, value added and revenue</div>
+    <h2>Where the money is made</h2>
+    <p class="lede">Gross output by line of activity, in UGX billion a year. Post-production and equipment hire are paid out of production budgets, so they are not counted twice.</p>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Gross output, core sector</h3><div class="hbar" id="outbars"></div><p class="note" id="outnote"></p></div>
+    <div class="panel"><h3>Revenue by window</h3><div class="hbar" id="windows"></div><p class="note">Free-to-air TV, local OTT, non-theatrical, export and catalogue income are not measured anywhere. They are excluded from every total.</p></div>
+  </div>
+  <div class="grid2" style="margin-top:34px">
+    <div class="panel">
+      <h3>Two ways to measure value added</h3>
+      <p class="note">Bottom-up multiplies output by value-added ratios. Top-down starts from UBOS national accounts (Information and communication is 1.8% of GDP; Arts, entertainment and recreation 0.2%) and applies estimated film shares. Bars show the selected case; thin lines show the Low to High range, and › marks a High value beyond the scale.</p>
+      <div class="hbar" id="gvabars"></div>
+      <div class="callout"><b id="gapline"></b><span class="note">A UBOS split of ISIC 59 and 60 in the supply-use tables would replace both sets of assumptions at almost no cost.</span></div>
+    </div>
+    <div class="panel">
+      <h3>Value added by stage</h3>
+      <div class="hbar" id="gvastage"></div>
+      <div class="callout"><b id="hallline"></b><span class="note" id="hallnote"></span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="jobs"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Headcount, full-time equivalents and multipliers</div>
+    <h2>A livelihoods sector more than a GDP sector</h2>
+    <p class="lede" id="jobslede"></p>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Direct jobs by role group</h3><div class="hbar" id="rolebars"></div></div>
+    <div class="panel"><h3>Jobs supported across the economy</h3><div class="hbar" id="multbars"></div>
+      <p class="note">Indirect jobs are in suppliers: hotels, transport, catering, set construction, equipment, printing, legal and security. Induced jobs come from workers spending their pay. Ratios are set at or below South Africa's measured film multipliers (NFVF 2017), because Uganda imports more of its inputs.</p>
+      <h3 style="margin-top:14px">Cross-checks on direct jobs</h3><div class="hbar" id="xcheck"></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="tax"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Tax and formality</div>
+    <h2>A thin tax base, by structure</h2>
+    <p class="lede">Most film enterprises sit below the UGX 150 million VAT threshold or on presumptive tax. The gap below is what full formalisation would yield, not a revenue forecast.</p>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Estimated tax paid, UGX billion a year</h3><div class="hbar" id="taxbars"></div></div>
+    <div class="panel"><h3>Actual vs full-compliance potential</h3><div class="hbar" id="gapbars"></div>
+      <p class="note">Rates: VAT 18%, withholding 6%, corporate income tax 30%, PAYE bands to 30% (PwC Uganda Tax Data Card 2025/26); film equipment import duty 10% plus levies (NPA 2025). Compliance shares are estimates. URA can replace this whole panel with aggregates by activity code.</p></div>
+  </div>
+</div></section>
+
+<section id="scenarios"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Growth scenarios, central case</div>
+    <h2>What policy could add by 2029</h2>
+    <p class="lede"><b>Baseline:</b> no new policy, 9% nominal growth a year. <b>NFIDP implemented:</b> the proposed 2027 programme (28 films, 1,400 trained in seven regions), the proposed UGX 33.15bn National Film Fund and three regional hubs. <b>Accelerated:</b> NFIDP plus a foreign production incentive and single permit window. All programme figures are proposals, not approved funding.</p>
+  </div>
+  <div class="filters"><div class="seg" role="group" aria-label="Scenario measure">
+    <button id="m-head" data-m="head" aria-pressed="true">Direct jobs</button><button id="m-gva" data-m="gva" aria-pressed="false">Value added</button><button id="m-tax" data-m="tax" aria-pressed="false">Tax</button>
+  </div></div>
+  <div class="grid2">
+    <div class="panel"><div id="chart" style="max-width:100%"></div></div>
+    <div class="panel"><h3>Increment over baseline in 2029</h3><div class="tbl"><table id="inc"></table></div>
+      <p class="note">The NFIDP's direct value-added effect is modest. Its stronger case is formal jobs, regional reach and the data it generates. The accelerated gain depends on foreign productions, which need an incentive and a film commission first.</p></div>
+  </div>
+</div></section>
+
+<section id="claims"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Figures in circulation, checked</div>
+    <h2>Claims that do not survive the evidence</h2>
+    <p class="lede">These numbers appear in sector documents and the press. None is used in this baseline.</p>
+  </div>
+  <div class="myth" id="myths"></div>
+</div></section>
+
+<section id="gaps"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">What Uganda does not yet measure</div>
+    <h2>Closing the data gaps in 2027</h2>
+    <p class="lede">Ten instruments replace the estimates above with measured figures. The first four steps use data Government already holds.</p>
+  </div>
+  <div class="steps" id="plan"></div>
+  <p class="note" id="plancost" style="margin-top:16px"></p>
+  <h3 style="margin-top:30px">Regions</h3>
+  <p class="note" style="margin:6px 0 12px">The statistical regions are the six in the study brief. The seven programme regions are a proposed reconciliation pending PGU Board confirmation. Regional job and enterprise counts are a data gap.</p>
+  <div class="tbl"><table id="regions"></table></div>
+</div></section>
+
+<section id="kpis"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Annual tracking</div>
+    <h2>Nineteen indicators linked to the NFIDP pillars</h2>
+  </div>
+  <div class="tbl"><table id="kpitbl"></table></div>
+</div></section>
+
+<section id="sources"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Full category table and source register</div>
+    <h2>Method and sources</h2>
+    <p class="lede">Grade A is official statistics, B official or institutional reports, C media or practitioner sources, D comparators from other countries used only to set ratio ranges.</p>
+  </div>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Filter the 54 categories" aria-label="Filter categories">
+    <select id="layerf" aria-label="Filter by layer"><option value="">All layers</option></select>
+  </div>
+  <div class="tbl" style="max-height:520px;overflow:auto"><table id="cattbl"></table></div>
+  <h3 style="margin:30px 0 12px">Source register</h3>
+  <div class="tbl"><table id="srctbl"></table></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div>National Producers Guild of Uganda · Lungujja, Kampala · Uganda National Film Sector Mapping, Diagnostic and Development Framework, Deliverable 3 of 7.</div>
+  <div>Draft for review. Cite as: PGU (2026), Uganda Film Sector Economic &amp; Employment Baseline, draft. Figures labelled Estimate must be quoted with their range.</div>
+</div></footer>
+
+<script>
+const D = {"hl_firms": [1806.35, 4743.25, 12010.15], "hl_ent": [2956.35, 7543.25, 17610.15], "hl_head": [6341.25, 20805.9166666667, 70705.3916666667], "hl_fte": [2720.98840909091, 11190.9852272727, 44971.6113636364], "hl_alljobs": [7973.84304545455, 31437.3526325758, 126470.189757576], "hl_out": [19.7655, 83.74, 354.495], "hl_gva": [8.3497, 45.915, 232.72475], "hl_gva_usd": [2.26176142288997, 12.4374259832081, 63.0403321917808], "hl_gdp": [3.28469708890637e-05, 0.000180625491738788, 0.000915518292682927], "hl_td": [44.485, 121.5076, 279.62], "hl_gva_all": [15.02946, 98.71725, 584.1391225], "hl_tax": [1.375232025, 7.097859, 46.0559109], "hl_gap": [1.104116175, 8.4738375, 61.0429428], "hl_fteratio": [0.429093382076232, 0.537875134586206, 0.636042178730166], "o_feat": [5.4075, 12.18, 27.63], "o_tv": [0.4875, 2, 7.8], "o_doc": [0.3, 1.5, 5], "o_anim": [0.2, 0.4, 1.6], "o_short": [0.075, 0.375, 1.2], "o_comm": [7.9605, 26.535, 61.915], "o_foreign": [0.5, 2, 6], "o_creator": [2, 12.5, 50], "o_cin": [1.2, 5.4, 18.75], "o_hall": [0.75, 14.85, 138.6], "o_dist": [0.885, 6, 36], "tot_out_core": [19.7655, 83.74, 354.495], "o_paytv": [5.4, 19.5, 61.44], "tot_out_ext": [5.4, 19.5, 61.44], "g_prod": [5.9722, 22.495, 61.12975], "g_creator": [1.2, 8.75, 40], "g_cin": [0.36, 2.16, 9.375], "g_hall": [0.375, 8.91, 97.02], "g_dist": [0.4425, 3.6, 25.2], "tot_gva": [8.3497, 45.915, 232.72475], "td_core": [44.485, 121.5076, 279.62], "td_ext": [147.436, 299.956, 508.4], "td_gap": [5.32773632585602, 2.64635957748013, 1.20150521162876], "g_ind": [4.17485, 32.1405, 218.761265], "g_indu": [2.50491, 20.66175, 132.6531075], "tot_gva_all": [15.02946, 98.71725, 584.1391225], "t_vat": [0.7442946, 2.86794, 14.9971365], "t_paye": [0.15219, 2.247039, 22.9085469], "t_wht": [0.152064, 0.85605, 2.92803], "t_cit": [0.026683425, 0.37683, 3.7221975], "t_duty": [0.3, 0.75, 1.5], "tot_tax": [1.375232025, 7.097859, 46.0559109], "tot_pot": [2.4793482, 15.5716965, 107.0988537], "tax_gap": [1.104116175, 8.4738375, 61.0429428], "tot_head": [6341.25, 20805.9166666667, 70705.3916666667], "tot_fte": [2720.98840909091, 11190.9852272727, 44971.6113636364], "ind_jobs": [1088.39536363636, 6714.59113636364, 34178.4246363636], "indu_jobs": [544.197681818182, 3916.84482954545, 21586.3734545455], "tot_jobs_all": [7973.84304545455, 31437.3526325758, 126470.189757576], "td_jobs": [2965.66666666667, 13500.8444444444, 55924], "pool": [1432.575, 4205.66666666667, 13879], "fte_ratio": [0.429093382076232, 0.537875134586206, 0.636042178730166], "share_emp": [0.0006343787515006, 0.00208142423636121, 0.0070733685140723], "l_cin": [0.48, 2.7, 10.3125], "l_creator": [1.63636363636364, 10.2272727272727, 40.9090909090909], "l_equip": [3, 6, 12], "l_post": [0.0495, 0.316, 1.575], "l_hall_ip": [0.7125, 13.365, 110.88], "hall_ug_sh": [0.05, 0.1, 0.2], "features": [150, 200, 300], "tv_seasons": [25, 40, 60], "docs": [30, 60, 100], "shorts": [150, 250, 400], "halls": [1000, 3000, 8000], "screens": [10, 18, 30], "ticket": [15000, 20000, 25000], "hall_fee": [500, 1000, 1500], "prod_cos_reg": [1769, 1769, 1769], "active_sh": [0.15, 0.25, 0.35], "creators": [1000, 2500, 5000], "sc": {"b_head": [20805.9166666667, 22678.4491666667, 24719.5095916667, 26944.2654549167], "n_head": [20805.9166666667, 25154.9594887947, 27925.834936484, 30150.590799734], "a_head": [20805.9166666667, 25779.1369887947, 32974.1849029376, 36106.0579269376], "b_gva": [45.915, 50.04735, 54.5516115, 59.461256535], "n_gva": [45.915, 55.0311, 59.5953615, 64.505006535], "a_gva": [45.915, 56.40855, 70.0228865220228, 76.9343796420229], "b_tax": [7.097859, 7.73666631, 8.4329662779, 9.191933242911], "n_tax": [7.097859, 8.93276631, 9.6434662779, 10.402433242911], "a_tax": [7.097859, 9.14570208, 11.8860608548855, 12.9544873744375], "d_jobs_n": [null, null, null, 3206.32534481729], "d_jobs_a": [null, null, null, 9161.79247202093], "d_gva_n": [null, null, null, 5.04375], "d_gva_a": [null, null, null, 17.4731231070229], "d_tax_n": [null, null, null, 1.2105], "d_tax_a": [null, null, null, 3.76255413152648]}, "vc": [[1, "1 Development & creation", "Screenwriters", "9000", "2641", "Core", 57.303, 168.226666666667, 555.16, "ESTIMATE", null, null, null, "n/a (individuals)"], [2, "1 Development & creation", "Producers", "5911", "1431 / 2654", "Core", 85.9545, 252.34, 832.74, "ESTIMATE", null, null, null, "n/a (individuals; see Production Cos.)"], [3, "1 Development & creation", "Directors", "5911 / 9000", "2654", "Core", 57.303, 168.226666666667, 555.16, "ESTIMATE", null, null, null, "n/a"], [4, "1 Development & creation", "Story Editors & Researchers", "9000 / 7220", "2641 / 2622", "Core", 14.32575, 42.0566666666667, 138.79, "ESTIMATE", null, null, null, "n/a"], [5, "1 Development & creation", "Documentary Makers", "5911", "2654", "Core", 40, 180, 666.666666666667, "ESTIMATE", null, null, null, "n/a"], [6, "1 Development & creation", "Animators & Concept Artists", "5911 / 5912", "2166 / 2651", "Core", 40, 80, 300, "ESTIMATE", 10, 10, 20, "ESTIMATE"], [7, "1 Development & creation", "Digital Content Creators", "5911 / 6312", "2654 / 2642", "Core", 1000, 2500, 5000, "ESTIMATE", 1000, 2500, 5000, "ESTIMATE (own-account)"], [8, "1 Development & creation", "Student & Short Film Makers", "8549 / 5911", "2654", "Core", 450, 1666.66666666667, 6000, "ESTIMATE", null, null, null, "n/a"], [9, "1 Development & creation", "Cultural Custodians", "9000 / 9102", "2632 / 3433", "Core", 7.162875, 21.0283333333333, 69.395, "ESTIMATE", null, null, null, "n/a"], [10, "2 Production", "Actors & Performers", "9000", "2655", "Core", 401.121, 1177.58666666667, 3886.12, "ESTIMATE", null, null, null, "n/a"], [11, "2 Production", "Cinematographers & Camera", "5911", "3521", "Core", 114.606, 336.453333333333, 1110.32, "ESTIMATE", null, null, null, "n/a"], [12, "2 Production", "Gaffers, Grips & Lighting", "5911", "3521 / 7411", "Core", 114.606, 336.453333333333, 1110.32, "ESTIMATE", null, null, null, "n/a"], [13, "2 Production", "Sound Recordists", "5911", "3521", "Core", 57.303, 168.226666666667, 555.16, "ESTIMATE", null, null, null, "n/a"], [14, "2 Production", "Production Design & Art", "5911 / 9000", "2163 / 3432", "Core", 85.9545, 252.34, 832.74, "ESTIMATE", null, null, null, "n/a"], [15, "2 Production", "Costume, Hair & Makeup", "5911 / 9602", "7531 / 5142", "Core", 100.28025, 294.396666666667, 971.53, "ESTIMATE", null, null, null, "n/a"], [16, "2 Production", "Line Producers & Prod. Managers", "5911", "1431 / 3435", "Core", 136.094625, 399.538333333333, 1318.505, "ESTIMATE", null, null, null, "n/a"], [17, "2 Production", "Stunts & Practical FX", "5911 / 9000", "2659 / 3435", "Core", 14.32575, 42.0566666666667, 138.79, "ESTIMATE", null, null, null, "n/a"], [18, "2 Production", "Extras & Background Cast", "5911", "2655 / 9629", "Core", 780, 2773.33333333333, 10950, "ESTIMATE", null, null, null, "n/a"], [19, "3 Services & post-production", "Production Cos. & Studios", "5911", "1431 / 4110", "Core", 132.675, 442.25, 928.725, "ESTIMATE", 265.35, 442.25, 619.15, "DERIVED (registered x active share)"], [20, "3 Services & post-production", "Equipment Rental", "7729 / 7730", "3521 / 5244", "Core", 60, 180, 400, "ESTIMATE", 15, 30, 50, "ESTIMATE"], [21, "3 Services & post-production", "Casting & Talent Agencies", "7810 / 9000", "3339", "Core", 10, 30, 60, "ESTIMATE", 5, 10, 20, "ESTIMATE"], [22, "3 Services & post-production", "Locations & Fixers", "5911 / 7990", "3339 / 4221", "Core", 125.6515, 181.113333333333, 374.58, "ESTIMATE", 97, 97, 97, "VERIFIED (secondary, 2020)"], [23, "3 Services & post-production", "Editing & Colour Grading", "5912", "3521 / 2654", "Core", 112.9545, 342.34, 1072.74, "ESTIMATE", 15, 30, 50, "ESTIMATE"], [24, "3 Services & post-production", "Sound Design & Mixing", "5912", "3521", "Core", 37.6515, 114.113333333333, 357.58, "ESTIMATE", null, null, null, "in post houses"], [25, "3 Services & post-production", "Film Score & Music Licensing", "5920", "2652", "Core", 28.6515, 84.1133333333333, 277.58, "ESTIMATE", null, null, null, "n/a"], [26, "3 Services & post-production", "VFX & Animation", "5912", "2166 / 3521", "Core", 23.32575, 72.0566666666667, 218.79, "ESTIMATE", null, null, null, "in post houses / animation"], [27, "3 Services & post-production", "Subtitling, Dubbing & VJs", "5912 / 7490", "2643 / 2656", "Core", 165, 330, 660, "ESTIMATE", 150, 300, 600, "ESTIMATE (own-account VJs)"], [28, "4 Distribution & exhibition", "Distributors & Sales Agents", "5913 / 4762", "3322 / 5223", "Core", 295, 1500, 6000, "ESTIMATE", 295, 1000, 3000, "ESTIMATE"], [29, "4 Distribution & exhibition", "Cinemas", "5914", "5131 / 3521", "Core", 40, 108, 240, "ESTIMATE", 6, 10, 10, "ESTIMATE (conflicting sources)"], [30, "4 Distribution & exhibition", "Video Halls (Bibanda)", "5914", "5223 / 3521", "Core", 1500, 6000, 24000, "ESTIMATE", 1000, 3000, 8000, "ESTIMATE (conflicting sources)"], [31, "4 Distribution & exhibition", "Free-to-Air Television", "6020", "2654 / 3521", "Extended", 94, 224, 520, "ESTIMATE", 40, 48, 57, "ESTIMATE (conflicting sources)"], [32, "4 Distribution & exhibition", "Pay-TV & Satellite", "6020 / 6130", "2654", "Extended", 50, 100, 200, "ESTIMATE", 7, 8, 8, "ESTIMATE"], [33, "4 Distribution & exhibition", "OTT & VOD Platforms", "6020 / 6312", "2654 / 2513", "Core", 24, 48, 80, "ESTIMATE", 8, 8, 8, "VERIFIED (named list)"], [34, "4 Distribution & exhibition", "YouTube & Social Video", "6312", "2642", "Core", 0, 0, 0, "DATA GAP", null, null, null, "counted in Digital Content Creators"], [35, "4 Distribution & exhibition", "Mobile & Telco Platforms", "6110 / 6120", "2513", "Core", 10, 20, 40, "ESTIMATE", 2, 2, 2, "ESTIMATE"], [36, "4 Distribution & exhibition", "Festivals & Film Markets", "9000 / 8230", "3332", "Core", 45, 75, 200, "ESTIMATE", 15, 15, 20, "ESTIMATE (floor verified, NPA 2025)"], [37, "5 Marketing & monetisation", "Marketing & Publicity", "7310 / 7320", "2431 / 2432", "Core", 50, 150, 300, "ESTIMATE", null, null, null, "DATA GAP"], [38, "5 Marketing & monetisation", "Film Critics & Media", "6391 / 9000", "2642", "Core", 20, 50, 100, "ESTIMATE", null, null, null, "n/a"], [39, "5 Marketing & monetisation", "Influencers & Fan Communities", "6312", "2642", "Core", 0, 0, 0, "DATA GAP", null, null, null, "DATA GAP"], [40, "5 Marketing & monetisation", "Ticketing & Box Office", "5914 / 7990", "4211", "Core", 0, 0, 0, "DATA GAP", null, null, null, "in Cinemas"], [41, "5 Marketing & monetisation", "Subscriptions & Advertising", "7312 / 6020", "2433", "Core", 0, 0, 0, "DATA GAP", null, null, null, "DATA GAP"], [42, "5 Marketing & monetisation", "Brand Partners & Product Placement", "7310", "2431", "Core", 0, 0, 0, "DATA GAP", null, null, null, "DATA GAP"], [43, "5 Marketing & monetisation", "Merchandise & Licensing", "7740 / 4771", "3322", "Core", 0, 0, 0, "DATA GAP", null, null, null, "DATA GAP"], [44, "5 Marketing & monetisation", "Awards", "9000 / 8230", "3332", "Core", 12, 30, 64, "ESTIMATE", 4, 6, 8, "ESTIMATE"], [45, "5 Marketing & monetisation", "Audience Data & Analytics", "7320", "2120 / 2431", "Core", 0, 0, 0, "DATA GAP", null, null, null, "DATA GAP"], [46, "6 Rights, finance & enablers", "Entertainment Lawyers", "6910", "2611", "Enabling", 10, 20, 40, "ESTIMATE", null, null, null, "n/a"], [47, "6 Rights, finance & enablers", "Copyright Office & CMOs", "8413 / 9499", "2422", "Enabling", 3, 5, 10, "ESTIMATE", 0, 0, 0, "ESTIMATE (no audiovisual CMO identified)"], [48, "6 Rights, finance & enablers", "Banks, Funds & Investors", "6419 / 6430", "2412", "Enabling", 0, 0, 0, "DATA GAP", null, null, null, "DATA GAP (no dedicated film lender identified)"], [49, "6 Rights, finance & enablers", "Insurers & Guarantors", "6512", "3321", "Enabling", 0, 0, 0, "DATA GAP", null, null, null, "DATA GAP"], [50, "6 Rights, finance & enablers", "Film Schools & TVETs", "8530 / 8549", "2310 / 2320", "Enabling", 40, 80, 150, "ESTIMATE", 5, 10, 20, "ESTIMATE"], [51, "6 Rights, finance & enablers", "Guilds & Associations", "9412", "1114", "Enabling", 10, 25, 40, "ESTIMATE", 8, 8, 12, "ESTIMATE (floor from PGU docs)"], [52, "6 Rights, finance & enablers", "Government & Regulators", "8411 / 8413", "1112 / 2422", "Enabling", 20, 40, 60, "ESTIMATE", 9, 9, 9, "VERIFIED (D2 slide 6)"], [53, "6 Rights, finance & enablers", "Development Partners", "9900", "2422", "Enabling", 5, 10, 20, "ESTIMATE", null, null, null, "n/a"], [54, "6 Rights, finance & enablers", "Archives & Heritage Bodies", "9101", "2621", "Enabling", 5, 10, 20, "ESTIMATE", null, null, null, "DATA GAP"]], "plan": [[1, "NLFS special tabulation", "Film employment at ISIC 59/60/9000 and ISCO 2654/2655/3521; gender, age, district", "Re-tabulate NLFS 2021 and LMS 2025 microdata. No fieldwork.", "UBOS", "PGU, MGLSD", "Q1 2027 (6 weeks)", 5, 15], [2, "National accounts split", "ISIC 59 and 60 GVA separately from rest of ISIC J; 9000 within R", "UBOS supply-use table, 4-digit split", "UBOS", "NPA", "Q1-Q2 2027", 5, 20], [3, "Production budget sampling", "Budget bands, spend split by stage, crew size, days, rates", "60 productions stratified by type and band; budget-to-actual templates under NDA", "PGU", "UCC, Media Council", "Q1-Q3 2027", 40, 80], [4, "Film enterprise survey", "Enterprise counts by layer, formal/informal, legal form, years active, district, turnover, employment, tax status", "Frame: URSB ISIC 5911-5914 + UCC licensees + PGU/regional lists + snowball. ~600 enterprises stratified by 6 layers x 7 regions", "UBOS (method), PGU (field)", "URSB, UCC, regional associations", "Q2-Q3 2027", 180, 300], [5, "Practitioner survey", "Earnings, day rates, payment delays, contracts, NSSF/health cover, hours, safety, harassment, child performers, disability, gender, youth", "1,500 practitioners, online + field, quota by role and region; ILO decent-work module", "MGLSD", "PGU, guilds, UBOS", "Q2-Q3 2027", 120, 200], [6, "Video hall census", "Number, location, licensing, admissions, fees, content origin", "Full enumeration via local government licensing records + field verification in sample districts", "Local governments / MoLG", "UCC, PGU", "Q2-Q4 2027", 150, 250], [7, "Broadcaster and platform data request", "Local scripted hours, commissioning spend, licence fees, subscriber and view data", "Statutory returns via UCC; data-sharing MoUs with OTT platforms and telcos", "UCC", "PGU", "Q1-Q2 2027", 10, 20], [8, "URA tax data extract", "PAYE, VAT, WHT, CIT, customs by ISIC/HS code", "Anonymised aggregates; HS 8525/8521/8543/9006/9007/8518 import values", "URA", "MoFPED, PGU", "Q1-Q2 2027", 0, 10], [9, "Box office and admissions reporting", "Admissions, gross by title, origin of title", "Monthly exhibitor returns, standard template", "Media Council / UCC", "Cinemas", "From Q1 2027, ongoing", 5, 15], [10, "Foreign production register", "Local spend, Ugandan crew, days, locations", "Mandatory return as permit condition", "UCC / proposed Film Commission", "MTWA, UTB, DCIC", "From 2027", 5, 15]], "kpi": [[1, "Direct film employment (headcount)", "6 Youth employment", 20805.9166666667, "ESTIMATE", "Practitioner survey + NLFS special tabulation", "Annual", "UBOS with PGU"], [2, "Direct film employment (FTE)", "6 Youth employment", 11190.9852272727, "ESTIMATE", "Practitioner survey; production returns", "Annual", "UBOS with PGU"], [3, "Film sector GVA", "1 Policy & institution", 45.915, "ESTIMATE", "UBOS supply-use tables, ISIC 59/60 split", "Annual", "UBOS"], [4, "Film GVA share of GDP", "1 Policy & institution", 0.000180625491738788, "DERIVED", "UBOS", "Annual", "UBOS"], [5, "Active film enterprises", "1 Policy & institution", 4743.25, "ESTIMATE", "URSB + enterprise survey", "Annual", "URSB with PGU"], [6, "Formal share of enterprises", "1 Policy & institution", 0.221841564328256, "ESTIMATE", "URSB/URA matching", "Annual", "URA with PGU"], [7, "Feature films completed", "4 Film Fund", 200, "ESTIMATE", "Media Council classification register; UFF entries", "Annual", "Media Council / UCC"], [8, "Local scripted TV hours broadcast", "7 Exports & markets", null, "DATA GAP", "UCC broadcaster returns", "Quarterly", "UCC"], [9, "Local content compliance", "7 Exports & markets", null, "DATA GAP", "UCC monitoring (local drama was 2% of programming, Jan-Mar 2023, per NPA 2025 citing Caribou Digital)", "Quarterly", "UCC"], [10, "Cinema screens outside Kampala", "5 Infrastructure", null, "DATA GAP", "Exhibitor census", "Annual", "Media Council / PGU"], [11, "Licensed video halls", "5 Infrastructure", null, "DATA GAP", "Local government licensing + census", "Annual", "Local governments / UCC"], [12, "Film tax contribution", "1 Policy & institution", 7.097859, "ESTIMATE", "URA ISIC-coded returns", "Annual", "URA"], [13, "Film finance deployed", "4 Film Fund", 0, "VERIFIED", "No Fund operational at Nov 2026 (proposal stage)", "Annual", "Fund manager / UDB"], [14, "Filmmakers trained", "2 Capacity building", 0, "VERIFIED", "Programme records; 2027 target 1,400 (proposal)", "Annual", "PGU / MGLSD"], [15, "Women in key creative roles", "6 Youth & women", null, "DATA GAP", "Production returns; practitioner survey", "Annual", "PGU"], [16, "Workers with written contracts", "2 Capacity building", null, "DATA GAP", "Practitioner survey", "Biennial", "MGLSD with PGU"], [17, "Foreign production local spend", "7 Investment & exports", 2, "ESTIMATE", "Film permit returns", "Annual", "Film Commission (proposed) / UCC"], [18, "Film export earnings", "7 Investment & exports", null, "DATA GAP", "BoU/UBOS ITS survey: audiovisual services line (no exports recorded under personal, cultural & recreational services 2017-19)", "Annual", "UBOS / BoU"], [19, "Regional production share", "3 Regional festivals & associations", null, "DATA GAP", "Production returns by district", "Annual", "PGU with regional associations"]], "src": [["S1", "Annual Gross Domestic Product 2020/21", "UBOS", "2021", "https://www.ubos.org/wp-content/uploads/publications/05_2021AGDP_June_2020_21.pdf", "A"], ["S2", "GDP Rebase Publication", "UBOS", "2019", "https://www.ubos.org/wp-content/uploads/publications/12_2019GDP_Rebase_Publication.pdf", "A"], ["S3", "National Labour Force Survey 2021, Key Findings", "UBOS", "2022", "https://www.ubos.org/wp-content/uploads/2022/11/National_Labour_Force_Survey_NLFS_2021_Key_Findings.pdf", "A"], ["S4", "Labour Market Survey 2025, findings presentation", "UBOS", "2026", "https://www.ubos.org/wp-content/uploads/publications/04_2026Presentation_on_the_Labour_Market_Survey_2025_Report_Findings_16th_April_2026.pdf", "A"], ["S5", "International Trade in Services Report 2020 (2019 data)", "UBOS", "2021", "https://www.ubos.org/wp-content/uploads/publications/11_2021ITS_report_2020.pdf", "A"], ["S6", "National Population and Housing Census 2024", "UBOS", "2024", "https://statistics.ubos.org/nphc/", "A"], ["S7", "Uganda Budget Brief 2025/26", "KPMG (citing MoFPED)", "2025", "https://assets.kpmg.com/content/dam/kpmg/ke/pdf/tax/2025/Uganda_Budget_Brief_2025_2026.pdf", "B"], ["S8", "Tax Data Card 2025/26", "PwC Uganda", "2025", "https://www.pwc.com/ug/en/assets/pdf/tax-datacard-2025-2026.pdf", "B"], ["S9", "A Diagnostic Study of the Cultural and Creative Industries in Uganda", "National Planning Authority", "2025", "https://npa.go.ug/wp-content/uploads/2026/05/A-Diagnostic-Study-of-the-Creative-Industry-in-Uganda.pdf", "B"], ["S10", "Uganda Audiovisual Content Strategy profiling (Steadman Global Consulting)", "UCC (via NPA 2025)", "2020", "Primary not sighted", "B"], ["S11", "State of Uganda's film and audiovisual industry", "Daily Monitor", "n.d.", "https://www.monitor.co.ug/uganda/special-reports/state-of-uganda-film-audiovisual-industry-3807864", "C"], ["S12", "Uganda's creative industry picking up", "Daily Monitor", "2024", "https://www.monitor.co.ug/uganda/news/national/uganda-s-creative-industry-picking-up-4636538", "C"], ["S13", "Inside Uganda's video halls", "The Conversation / AllAfrica", "2025", "https://allafrica.com/stories/202601050097.html", "C"], ["S14", "Monitoring Series Brief 10: The power of informal cinema", "Twaweza", "n.d.", "https://twaweza.org/wp-content/uploads/2021/02/Brief10-The-power-of-informal-cinema-HNN.pdf", "B"], ["S15", "UCC launches 2025 Uganda Film Festival", "The Observer", "2025", "https://observer.ug/lifestyle-entertainment/ucc-launches-2025-uganda-film-festival-with-27-categories/", "C"], ["S16", "Uganda's film won some but lost more in 2024", "Daily Monitor", "2025", "https://www.monitor.co.ug/uganda/lifestyle/entertainment/ugandan-film-won-some-but-lost-more-in-2024-4884956", "C"], ["S17", "Uganda's film industry booms amid calls for investment", "Nile Post / AllAfrica", "2025", "https://allafrica.com/stories/202511250014.html", "C"], ["S18", "Economic Impact of the South African Film Industry", "NFVF / Urban-Econ", "2017", "https://www.nfvf.co.za/wp-content/uploads/2022/02/Final-NFVF-Economic-Impact-Study-Report_21_06_2017.pdf", "D"], ["S19", "Film Industry Satellite Account (reported)", "KNBS / Kenya Film Commission (via Sinema Focus)", "2023", "https://www.sinemafocus.com/?p=5933", "D"], ["S20", "Strengthening the film industry", "GIZ", "2025", "https://www.giz.de/sites/default/files/media/pkb-document/2025-09/giz2025-en-strengthening-film-industry.pdf", "D"], ["S21", "YouTube partner earnings overview", "Google", "2026", "https://support.google.com/youtube/answer/72902", "B"], ["S22", "PGU One-and-a-Half-Year Impact Report 2025-2026", "PGU", "2026", "PGU project files", "B"], ["S24", "PGU AGM record", "PGU", "2026", "PGU project files", "A"], ["S25", "Uganda Film Industry Value Chain (Deliverable 2)", "PGU", "2026", "Ugandas Film Industry Value Chain folder", "B"], ["S27", "Size of economy now at Shs205 trillion", "Daily Monitor", "2024", "https://www.monitor.co.ug/uganda/news/national/size-of-economy-now-at-shs205-trillion-govt-says-4857840", "C"]], "reg": [["Central", "1. Kampala Metropolitan (Kampala, Wakiso, Mukono)", "UFF (UCC); most cinemas; most production companies; PGU HQ Lungujja; proposed Kampala/Mulago Film City", "Kampala/Mulago"], ["Central", "2. Rest of Central (incl. Luweero, Masaka)", "UFF regional competition in Luweero (Mar 2026)", null], ["Eastern", "3. Eastern (Busoga, Bugisu/Elgon, Teso, Bukedi)", "Elgon Film Producers Association; CC Film Lab; UFF entries from Jinja", null], ["Northern", "4. Northern (Acholi, Lango)", "Northern Uganda Film Makers Association (NUFA) awards, Gulu (Apr 2026); Northern Uganda Film Festival; UCC hub approved in principle starting with Gulu (reported)", "Gulu"], ["West Nile", "5. West Nile", "UFF entries from Arua", null], ["Western", "6. Western (Ankole, Kigezi, Bunyoro, Tooro)", "WUFPA awards, Mbarara (May 2026); Bunyoro film association; cinema in Mbarara", "Mbarara"], ["Karamoja", "7. Karamoja", "None on record", null]]};
+let C = 1; let M = "head";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = (n, step=1) => n==null||n==="" ? "–" : (Math.round(n/step)*step).toLocaleString("en-GB");
+const bn = (n, dp=0) => n==null ? "–" : Number(n).toLocaleString("en-GB",{minimumFractionDigits:dp,maximumFractionDigits:dp});
+const pct = (n, dp=1) => (n*100).toFixed(dp)+"%";
+const chip = l => { const k = /GAP/.test(l) ? "GAP" : (l||"").split(" ")[0]; const t = /GAP/.test(l) ? "Data gap" : k.charAt(0)+k.slice(1).toLowerCase(); return `<i class="chip c-${k}">${t}</i>`; };
+const V = k => D[k][C];
+const R = k => `${D[k][0]} to ${D[k][2]}`;
+const CASES = ["Low","Central","High"];
+
+function sentence(){
+  $("#sentence").innerHTML = `Uganda's film sector has about <span class="v">${fmt(V("hl_firms"),100)}</span> enterprises and venues, employs about <span class="v">${fmt(V("hl_head"),100)}</span> people directly (<span class="v">${fmt(V("hl_fte"),100)}</span> full-time equivalents), and generates about <span class="v">UGX ${bn(V("hl_gva"))}bn</span> a year in direct value added (<span class="v">US$${bn(V("hl_gva_usd"),1)}m</span>, <span class="v">${pct(V("hl_gdp"),3)}</span> of GDP).`;
+  const T = [
+    ["Enterprises and venues","hl_firms",x=>fmt(x,100),"ESTIMATE"],
+    ["Direct jobs, persons","hl_head",x=>fmt(x,100),"ESTIMATE"],
+    ["Direct jobs, full-time equivalent","hl_fte",x=>fmt(x,100),"ESTIMATE"],
+    ["Total jobs incl. suppliers and spending","hl_alljobs",x=>fmt(x,100),"ESTIMATE"],
+    ["Direct value added, UGX bn","hl_gva",x=>bn(x),"ESTIMATE"],
+    ["Share of GDP","hl_gdp",x=>pct(x,3),"DERIVED"],
+    ["Tax paid, UGX bn a year","hl_tax",x=>bn(x,1),"ESTIMATE"],
+    ["Tax gap from informality, UGX bn","hl_gap",x=>bn(x,1),"ESTIMATE"],
+  ];
+  $("#tiles").innerHTML = T.map(([k,key,f,l]) => `<div class="tile"><div class="k">${k}</div><div class="big">${f(D[key][C])}</div><div class="rng">range ${f(D[key][0])} – ${f(D[key][2])}</div>${chip(l)}</div>`).join("")
+   + `<div class="tile"><div class="k">Registered production companies (2020 profile)</div><div class="big">1,769</div><div class="rng">Steadman 2020, via NPA 2025</div>${chip("VERIFIED")}</div>`;
+}
+
+// value chain
+const LAYERS = [["1 Development & creation","Story"],["2 Production","Shoot"],["3 Services & post-production","Finish"],["4 Distribution & exhibition","Screen"],["5 Marketing & monetisation","Earn"],["6 Rights, finance & enablers","Enable"]];
+let SEL = 30;
+function chain(){
+  const max = Math.max(...D.vc.map(r=>r[6+C]||0));
+  $("#vc").innerHTML = LAYERS.map(([L,verb]) => {
+    const rows = D.vc.filter(r=>r[1]===L);
+    const sum = rows.filter(r=>r[5]!=="Extended").reduce((a,r)=>a+(r[6+C]||0),0);
+    return `<div class="layer"><div class="layer-h">${esc(L.slice(2))}<b>${verb} · ${fmt(sum,10)}</b></div>` +
+      rows.map(r => { const j=r[6+C]||0; const gap=/GAP/.test(r[9]); const w = Math.sqrt(j/max)*100;
+        return `<button class="cat${gap?" gap":""}${r[5]==="Extended"?" ext":""}" id="cat-${r[0]}" data-id="${r[0]}" aria-pressed="${r[0]===SEL}"><span class="nm">${esc(r[2])}</span><span class="jb">${gap&&!j?"no data":fmt(j,5)+" jobs"}</span><span class="bar" style="width:${w}%"></span></button>`; }).join("") + `</div>`;
+  }).join("");
+  document.querySelectorAll(".cat").forEach(b => b.onclick = () => { SEL=+b.dataset.id; chain(); });
+  const r = D.vc.find(x=>x[0]===SEL);
+  const ent = r[10+C];
+  $("#detail").innerHTML = `<div class="t"><h3>${esc(r[2])}</h3><span class="note">${esc(r[1])} · ${r[5]} boundary</span>${chip(r[9])}</div>
+   <div class="dl"><span class="k">Direct jobs, ${CASES[C]}</span><span class="v">${fmt(r[6+C],5)}</span></div>
+   <div class="dl"><span class="k">Range</span><span class="v">${fmt(r[6],5)} – ${fmt(r[8],5)}</span></div>
+   <div class="dl"><span class="k">Enterprises, ${CASES[C]}</span><span class="v">${ent==null?"–":fmt(ent)}</span></div>
+   <div class="dl"><span class="k">Enterprise basis</span><span class="v" style="font-family:var(--body);font-size:.85rem">${esc(r[13])}</span></div>
+   <div class="dl"><span class="k">ISIC Rev.4</span><span class="v">${esc(r[3])}</span></div>
+   <div class="dl"><span class="k">ISCO-08</span><span class="v">${esc(r[4])}</span></div>`;
+}
+
+function bars(el, rows, opts={}){
+  const vals = rows.filter(r=>r.v!=null).map(r=>r.v);
+  const max = (opts.max ?? Math.max(...vals, 1))*1.08;
+  $(el).innerHTML = rows.map(r => {
+    if (r.v==null) return `<div class="hrow gaprow"><span class="lab">${esc(r.l)}</span><div class="track"><div class="fill ghost" style="width:100%"></div></div><span class="val">DATA GAP</span></div>`;
+    const range = r.lo!=null ? `<div class="rangebar" style="left:${Math.min(100,r.lo/max*100)}%;width:${Math.max(0,Math.min(100,r.hi/max*100)-Math.min(100,r.lo/max*100))}%"></div>${r.hi>max?'<span class="more" aria-hidden="true">›</span>':""}` : "";
+    return `<div class="hrow"><span class="lab">${esc(r.l)}</span><div class="track"><div class="fill${r.acc?" acc":""}" style="width:${Math.min(100,r.v/max*100)}%"></div>${range}</div><span class="val">${r.f?r.f(r.v):bn(r.v,1)}</span></div>`;
+  }).join("");
+}
+const trip = (l,k,o={}) => ({l, v:D[k][C], lo:D[k][0], hi:D[k][2], ...o});
+
+function money(){
+  const docs = D.o_doc.map((x,i)=>x+D.o_anim[i]+D.o_short[i]);
+  bars("#outbars",[
+    trip("Commissioned (adverts, corporate, NGO)","o_comm"),
+    trip("Video halls (film share)","o_hall",{acc:true}),
+    trip("Feature films","o_feat"),
+    trip("Online creators","o_creator"),
+    trip("Informal distribution","o_dist"),
+    trip("Cinema box office","o_cin"),
+    {l:"Documentary, animation, shorts", v:docs[C], lo:docs[0], hi:docs[2]},
+    trip("TV drama series","o_tv"),
+    trip("Foreign productions, local spend","o_foreign"),
+  ]);
+  $("#outnote").textContent = `Core gross output: UGX ${bn(V("tot_out_core"))}bn (range ${bn(D.tot_out_core[0])} to ${bn(D.tot_out_core[2])}). Pay-TV revenue attributable to local scripted content adds about UGX ${bn(V("o_paytv"))}bn outside the core boundary.`;
+  bars("#windows",[
+    trip("YouTube and social video","o_creator"),
+    trip("Video halls","o_hall",{acc:true}),
+    trip("Pay-TV, local scripted share","o_paytv"),
+    trip("Cinema","o_cin"),
+    {l:"Free-to-air TV",v:null},{l:"Local OTT / SVOD",v:null},{l:"Non-theatrical",v:null},{l:"Diaspora and export",v:null},{l:"Catalogue licensing",v:null},
+  ]);
+  bars("#gvabars",[
+    trip("Bottom-up, core","tot_gva",{acc:true}),
+    trip("Top-down, core","td_core"),
+    trip("Top-down, all broadcasting","td_ext"),
+    trip("Total incl. indirect and induced","tot_gva_all"),
+  ]);
+  $("#gapline").textContent = `Top-down is ${bn(V("td_gap"),1)} times bottom-up in the ${CASES[C].toLowerCase()} case.`;
+  bars("#gvastage",[
+    trip("Production and post","g_prod"),
+    trip("Video halls","g_hall",{acc:true}),
+    trip("Online creators","g_creator"),
+    trip("Informal distribution","g_dist"),
+    trip("Cinemas","g_cin"),
+  ]);
+  $("#hallline").textContent = `Video halls earn about ${bn(V("o_hall")/V("o_cin"),1)} times cinema box office from film.`;
+  $("#hallnote").textContent = `An estimated ${pct(1-V("hall_ug_sh"),0)} of video hall screenings are foreign titles shown without a licence: about UGX ${bn(V("l_hall_ip"),1)}bn a year of value that reaches neither Ugandan rights holders nor the tax base.`;
+}
+
+function jobs(){
+  const g = ids => D.vc.filter(r=>ids.includes(r[0])).reduce((a,r)=>a+(r[6+C]||0),0);
+  const gl = ids => [0,1,2].map(c=>D.vc.filter(r=>ids.includes(r[0])).reduce((a,r)=>a+(r[6+c]||0),0));
+  const grp = (l,ids,acc) => { const a=gl(ids); return {l, v:a[C], lo:a[0], hi:a[2], f:x=>fmt(x,10), acc}; };
+  bars("#rolebars",[
+    grp("Distribution and exhibition",[28,29,30,33,34,35,36],true),
+    grp("Extras and background cast",[18]),
+    grp("Online creators",[7]),
+    grp("Above-the-line (writers, producers, directors, actors)",[1,2,3,4,9,10]),
+    grp("Below-the-line crew",[11,12,13,14,15,16,17]),
+    grp("Documentary, animation, shorts",[5,6,8]),
+    grp("Services and post-production",[19,20,21,22,23,24,25,26,27]),
+    grp("Marketing and monetisation",[37,38,39,40,41,42,43,44,45]),
+    grp("Enabling institutions",[46,47,48,49,50,51,52,53,54]),
+  ]);
+  $("#jobslede").textContent = `About ${fmt(V("tot_head"),100)} people earn from film directly, about ${pct(V("share_emp"),1)} of Uganda's employed workforce. Work is casual: each person averages ${bn(V("fte_ratio"),2)} of a full-time job. Video halls are the largest single employer.`;
+  bars("#multbars",[
+    trip("Direct, full-time equivalent","tot_fte",{f:x=>fmt(x,100)}),
+    trip("Direct, persons engaged","tot_head",{f:x=>fmt(x,100),acc:true}),
+    trip("Indirect (suppliers)","ind_jobs",{f:x=>fmt(x,100)}),
+    trip("Induced (household spending)","indu_jobs",{f:x=>fmt(x,100)}),
+    trip("Total jobs supported","tot_jobs_all",{f:x=>fmt(x,100)}),
+  ]);
+  bars("#xcheck",[
+    {l:"This baseline, bottom-up",v:V("tot_head"),f:x=>fmt(x,100),acc:true},
+    {l:"This baseline, top-down",v:V("td_jobs"),f:x=>fmt(x,100)},
+    {l:"Practitioner estimate (Daily Monitor)",v:5000,f:x=>fmt(x)},
+    {l:"Kenya film jobs 2022 (comparator only)",v:29635,f:x=>fmt(x)},
+  ]);
+}
+
+function tax(){
+  bars("#taxbars",[
+    trip("VAT, incl. import VAT on equipment","t_vat",{f:x=>bn(x,2)}),
+    trip("PAYE","t_paye",{f:x=>bn(x,2)}),
+    trip("Withholding tax","t_wht",{f:x=>bn(x,2)}),
+    trip("Import duty and levies","t_duty",{f:x=>bn(x,2)}),
+    trip("Corporate income tax","t_cit",{f:x=>bn(x,2)}),
+  ]);
+  bars("#gapbars",[
+    trip("Estimated actual","tot_tax",{f:x=>bn(x,1)}),
+    trip("Full-compliance potential","tot_pot",{f:x=>bn(x,1)}),
+    trip("Gap","tax_gap",{f:x=>bn(x,1),acc:true}),
+  ]);
+}
+
+function chart(){
+  const S = D.sc; const yrs=["2026","2027","2028","2029"];
+  const ser = [["Baseline","b_"+M,"var(--muted)","4 3"],["NFIDP implemented","n_"+M,"var(--ink)",""],["Accelerated","a_"+M,"var(--accent)",""]];
+  const all = ser.flatMap(s=>S[s[1]]); const lo = Math.min(...all)*0.9, hi = Math.max(...all)*1.05;
+  const W=580,H=300,pl=58,pr=150,pt=16,pb=30;
+  const x=i=>pl+i*(W-pl-pr)/3, y=v=>pt+(H-pt-pb)*(1-(v-lo)/(hi-lo));
+  const f = M==="head"?(v=>fmt(v,100)):(M==="gva"?(v=>bn(v,0)):(v=>bn(v,1)));
+  const ticks=[0,1,2,3,4].map(i=>lo+(hi-lo)*i/4);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Scenario chart">`;
+  s+=ticks.map(t=>`<line class="axis" x1="${pl}" x2="${W-pr}" y1="${y(t)}" y2="${y(t)}"/><text x="${pl-8}" y="${y(t)+4}" text-anchor="end">${f(t)}</text>`).join("");
+  s+=yrs.map((t,i)=>`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${t}</text>`).join("");
+  ser.forEach(([n,k,c,dash])=>{const v=S[k];
+    s+=`<polyline fill="none" stroke="${c}" stroke-width="2.5" ${dash?`stroke-dasharray="${dash}"`:""} points="${v.map((d,i)=>x(i)+","+y(d)).join(" ")}"/>`;
+    s+=v.map((d,i)=>`<circle cx="${x(i)}" cy="${y(d)}" r="${i===3?4.5:3}" fill="${c}"/>`).join("");
+  });
+  // end labels, de-collided
+  const ends = ser.map(([n,k,c])=>({n,c,y:y(S[k][3]),v:S[k][3]})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<ends.length;i++) if(ends[i].y-ends[i-1].y<26) ends[i].y=ends[i-1].y+26;
+  ends.forEach(e=>{ s+=`<text x="${x(3)+10}" y="${e.y-2}" style="fill:${e.c};font-weight:500">${e.n}</text><text x="${x(3)+10}" y="${e.y+11}">${f(e.v)}</text>`; });
+  s+=`</svg>`;
+  $("#chart").innerHTML = s + `<p class="note">${M==="head"?"Direct headcount":M==="gva"?"Direct value added, UGX billion":"Tax, UGX billion a year"}. Central case.</p>`;
+  $("#inc").innerHTML = `<tr><th>Increment in 2029</th><th>NFIDP</th><th>Accelerated</th></tr>
+   <tr><td>Direct jobs</td><td class="n">${fmt(S.d_jobs_n[3],100)}</td><td class="n">${fmt(S.d_jobs_a[3],100)}</td></tr>
+   <tr><td>Value added, UGX bn</td><td class="n">${bn(S.d_gva_n[3],1)}</td><td class="n">${bn(S.d_gva_a[3],1)}</td></tr>
+   <tr><td>Tax, UGX bn</td><td class="n">${bn(S.d_tax_n[3],2)}</td><td class="n">${bn(S.d_tax_a[3],2)}</td></tr>`;
+}
+
+function myths(){
+  const M_ = [
+    ["Film is about 3.5% of Uganda's GDP","3.5% is the whole cultural and creative sector in 2017 (NPA 2025). UBOS puts all of arts, entertainment and recreation at 0.2% of GDP. Film's direct value added is estimated at "+pct(D.hl_gdp[1],3)+".","UNVERIFIED"],
+    ["Creative exports were US$514.3m in 2019, 30% of it film","US$514.3m is Uganda's total services exports in 2019 (UBOS ITS 2020). 30.3% is the professional services share. UBOS records no cultural services exports for 2017 to 2019.","UNVERIFIED"],
+    ["Film employs 500,000 people directly","That would be about 5% of all employed Ugandans (NLFS 2021: about 10 million). This baseline estimates about "+fmt(D.hl_head[1],100)+".","UNVERIFIED"],
+    ["Arts and entertainment grew to 4.1% of GDP in FY2022/23","UBOS records ISIC R at 0.2% of GDP in every year to 2020/21. The 4.1% figure is very likely a growth rate reported as a share.","UNVERIFIED"],
+    ["Uganda has over 15,000 video halls","About 1,000 are on Twaweza's registered list; industry contacts put the number near 3,000. No census exists.","UNVERIFIED"],
+  ];
+  $("#myths").innerHTML = M_.map(([c,f,l])=>`<article><div class="claim">${esc(c)}</div><div class="fact">${esc(f)}</div>${chip(l)}</article>`).join("");
+}
+
+function plan(){
+  $("#plan").innerHTML = D.plan.map(r=>`<div class="step"><div class="meta">${esc(r[4])} · ${esc(r[6])} · UGX ${r[7]}–${r[8]}m</div><h3>${esc(r[1])}</h3><p class="note">${esc(r[2])}</p></div>`).join("");
+  const lo=D.plan.reduce((a,r)=>a+r[7],0), hi=D.plan.reduce((a,r)=>a+r[8],0);
+  $("#plancost").textContent = `Total estimated cost: UGX ${fmt(lo)}m to ${fmt(hi)}m. Costs are planning estimates.`;
+  $("#regions").innerHTML = `<tr><th>Statistical region</th><th>Programme region (proposed)</th><th>Film assets on record</th><th>Phase I hub (proposal)</th><th>Jobs</th></tr>` +
+    D.reg.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3]||"–")}</td><td>${chip("DATA GAP")}</td></tr>`).join("");
+}
+
+function kpis(){
+  $("#kpitbl").innerHTML = `<tr><th>#</th><th>Indicator</th><th>NFIDP pillar</th><th>Baseline 2026</th><th>Label</th><th>Source</th><th>Frequency</th><th>Owner</th></tr>` +
+    D.kpi.map(r=>{ let b=r[3]; if(typeof b==="number") b = b>0&&b<1 ? pct(b, b<0.01?3:1) : (b>1000?fmt(b,100):bn(b, b<100?1:0)); if(b==null||b==="None"||b==="") b="–";
+      return `<tr><td class="n">${r[0]}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td class="n">${b}</td><td>${chip(r[4])}</td><td>${esc(r[5])}</td><td>${esc(r[6])}</td><td>${esc(r[7])}</td></tr>`; }).join("");
+}
+
+function cats(){
+  const q=$("#q").value.toLowerCase(), lf=$("#layerf").value;
+  const rows=D.vc.filter(r=>(!lf||r[1]===lf)&&(!q||(r[2]+" "+r[3]+" "+r[4]).toLowerCase().includes(q)));
+  $("#cattbl").innerHTML = `<tr><th>#</th><th>Category</th><th>Layer</th><th>ISIC</th><th>ISCO</th><th>Boundary</th><th>Jobs low</th><th>Jobs central</th><th>Jobs high</th><th>Label</th></tr>` +
+    rows.map(r=>`<tr><td class="n">${r[0]}</td><td>${esc(r[2])}</td><td>${esc(r[1].slice(2))}</td><td class="mono">${esc(r[3])}</td><td class="mono">${esc(r[4])}</td><td>${r[5]}</td><td class="n">${fmt(r[6],5)}</td><td class="n">${fmt(r[7],5)}</td><td class="n">${fmt(r[8],5)}</td><td>${chip(r[9])}</td></tr>`).join("");
+}
+function sources(){
+  $("#srctbl").innerHTML = `<tr><th>ID</th><th>Source</th><th>Publisher</th><th>Year</th><th>Grade</th></tr>` +
+    D.src.map(r=>`<tr><td class="mono">${r[0]}</td><td>${/^https?:/.test(r[4])?`<a href="${esc(r[4])}" target="_blank" rel="noopener">${esc(r[1])}</a>`:esc(r[1])}</td><td>${esc(r[2])}</td><td class="n">${esc(r[3])}</td><td class="mono">${esc(r[5])}</td></tr>`).join("");
+}
+
+function setCase(c){ C=c; document.querySelectorAll("[data-case]").forEach(b=>b.setAttribute("aria-pressed", String(+b.dataset.case===c))); try{localStorage.setItem("pgu-case",c)}catch(e){} render(); }
+function render(){ sentence(); chain(); money(); jobs(); tax(); }
+document.querySelectorAll("[data-case]").forEach(b=>b.onclick=()=>setCase(+b.dataset.case));
+document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{M=b.dataset.m; document.querySelectorAll("[data-m]").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); chart();});
+LAYERS.forEach(([L])=>{const o=document.createElement("option");o.value=L;o.textContent=L.slice(2);$("#layerf").appendChild(o);});
+$("#q").oninput=cats; $("#layerf").onchange=cats;
+try{ const s=localStorage.getItem("pgu-case"); if(s!==null) C=+s; }catch(e){}
+document.querySelectorAll("[data-case]").forEach(b=>b.setAttribute("aria-pressed", String(+b.dataset.case===C)));
+render(); chart(); myths(); plan(); kpis(); cats(); sources();
+</script>
+
+</body>
+</html>
